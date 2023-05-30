@@ -1,0 +1,75 @@
+﻿@model PhotoViewModel
+@using PhotoLibraryApp.DataAccess.Models;
+
+@{
+    ViewData["Title"] = "Photo Library | Photos";
+}
+<style>
+    body {
+        background-color: #DFEBD8;
+    }
+</style>
+
+<script type="text/javascript">
+
+    function confirmDelete(id) {
+        $("#hdnDeletePhotoID").val(id);
+        $("#deleteModal").modal("show");
+    }
+
+    function cancelDelete() {
+        $("#hdnDeletePhotoID").val(0);
+        $("#deleteModal").modal("hide");
+    }
+
+    function deleteAccount() {
+        var id = $("#hdnDeletePhotoID").val();
+        window.location.href = "/Photo/Delete/" + id;
+    }
+</script>
+
+<input type="hidden" id="hdnDeletePhotoID" value="0" />
+
+<div class="text-center">
+    
+    <h1 class="display-4">Name</h1>
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>ImagePath</th>
+                    <th>Date</th>
+                    
+                    <th colspan="2"><a type="button" href="~/Photos/Update/0" class="btn btn-success btn-sm">ADD NEW PHOTO</a></th>
+                </tr>
+
+                @foreach (PhotoModel photo in Model.PhotoList)
+                {
+                    <tr>
+                        <td>@photo.Name</td>
+                        <td>@photo.ImagePath</td>
+                        <td>@photo.Date</td>                        
+                        <td><a type="button" href="~/Photo/Update/@photo.PhotoID" class="btn btn-secondary btn-sm">EDIT</a></td>
+                        <td><button type="button" onclick="confirmDelete(@photo.PhotoID)" class="btn btn-danger btn-sm">DELETE</button></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="deleteModal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">CONFIRM DELETE</h5>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this photo?</p>
+                <button type="button" onclick="javascript:cancelDelete()" class="btn btn-secondary btn-sm">CANCEL</button>
+                <button type="button" onclick="javascript:deletePhoto()" class="btn btn-danger btn-sm">DELETE</button>
+            </div>
+        </div>
+    </div>
+</div>

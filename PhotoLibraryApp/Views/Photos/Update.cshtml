@@ -1,0 +1,40 @@
+﻿@model PhotoViewModel
+
+@{
+    string pageType = Model.CurrentPhoto.PhotoID > 0 ? "Update Photo" : "Add Photo";
+
+    ViewData["Title"] = $"Photo Library | {pageType}";
+}
+
+<form action="~/Photo/Index" method="post">
+    <div>
+        <div class="row">
+            <div class="col-6 offset-3 text-center">
+                <h1 class="display-4" style="margin: 20px 0px;">@pageType</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Name: </label>
+                <input type="text" class="form-control" required name="name" value="@Model.CurrentPhoto.Name" />
+            </div>
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>ImagePath: </label>
+                <input type="text" class="form-control" required name="imagePath" value="@Model.CurrentPhoto.ImagePath" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Date: </label>
+                <input type="datetime" class="form-control" required name="date" value="@Model.CurrentPhoto.Date" />
+            </div>
+        </div>        
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3">
+                <button type="button" class="btn btn-secondary" onclick="location.href = '/Photos/Index'">CANCEL</button>
+                <button type="submit" class="btn btn-primary">SAVE PHOTO</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="PhotoID" value="@Model.CurrentPhoto.PhotoID" />
+</form>
