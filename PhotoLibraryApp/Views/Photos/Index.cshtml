@@ -24,7 +24,7 @@
 
     function deleteAccount() {
         var id = $("#hdnDeletePhotoID").val();
-        window.location.href = "/Photo/Delete/" + id;
+        window.location.href = "/Photos/Delete/" + id;
     }
 </script>
 
@@ -50,7 +50,7 @@
                         <td>@photo.Name</td>
                         <td>@photo.ImagePath</td>
                         <td>@photo.Date</td>                        
-                        <td><a type="button" href="~/Photo/Update/@photo.PhotoID" class="btn btn-secondary btn-sm">EDIT</a></td>
+                        <td><a type="button" href="~/Photos/Update/@photo.PhotoID" class="btn btn-secondary btn-sm">EDIT</a></td>
                         <td><button type="button" onclick="confirmDelete(@photo.PhotoID)" class="btn btn-danger btn-sm">DELETE</button></td>
                     </tr>
                 }
@@ -68,7 +68,7 @@
             <div class="modal-body">
                 <p>Are you sure you want to delete this photo?</p>
                 <button type="button" onclick="javascript:cancelDelete()" class="btn btn-secondary btn-sm">CANCEL</button>
-                <button type="button" onclick="javascript:deletePhoto()" class="btn btn-danger btn-sm">DELETE</button>
+                <button type="button" onclick="javascript:deleteAccount()" class="btn btn-danger btn-sm">DELETE</button>
             </div>
         </div>
     </div>
