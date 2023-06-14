@@ -29,7 +29,7 @@ namespace PhotoLibraryApp.DataAccess.Repositories
             PhotoModel existingPhoto = _dbContext.Photos.Find(newPhoto.PhotoID);
 
             existingPhoto.Name = newPhoto.Name;
-            existingPhoto.ImagePath = newPhoto.ImagePath;
+            existingPhoto.ImageFile = newPhoto.ImageFile;
             existingPhoto.Date = newPhoto.Date;            
 
             _dbContext.SaveChanges();

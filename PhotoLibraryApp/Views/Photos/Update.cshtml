@@ -6,11 +6,51 @@
     ViewData["Title"] = $"Photo Library | {pageType}";
 }
 
-<form action="~/Photos/Index" method="post">
+
+<form enctype="multipart/form-data" method="post">
     <div>
         <div class="row">
             <div class="col-6 offset-3 text-center">
                 <h1 class="display-4" style="margin: 20px 0px;">@pageType</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Name:</label>
+                <input type="text" class="form-control" required name="Name" value="@Model.CurrentPhoto.Name" />
+            </div>
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Image:</label>
+                <input type="file" class="form-control" name="ImageFile" />
+                @if (!string.IsNullOrWhiteSpace(Model.CurrentPhoto.ImagePath))
+                {
+                    <img src="~/uploads/@Model.CurrentPhoto.ImagePath" alt="@Model.CurrentPhoto.Name" width="100" />
+                }
+
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Date:</label>
+                <input type="datetime-local" class="form-control" required name="Date" value="@Model.CurrentPhoto.Date.ToString("yyyy-MM-ddTHH:mm")" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3">
+                <button type="button" class="btn btn-secondary" onclick="location.href = '@Url.Action("Index", "Photos")'">CANCEL</button>
+                <!-- <button type="button" class="btn btn-secondary" onclick="location.href = '/Photos/Index'">CANCEL</button> -->
+                <button type="submit" class="btn btn-primary">SAVE PHOTO</button>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="PhotoID" value="@Model.CurrentPhoto.PhotoID" />
+</form>
+
+<!-- <form action="~/Photos/Index" method="post">
+    <div>
+        <div class="row">
+            <div class="col-6 offset-3 text-center">
+                <h1 class="display-4" style="margin: 20px 0px;">/h1> IMPORTANTE NOTE: Remember to add the missing code that was erased to clean the error.
             </div>
         </div>
         <div class="form-row">
@@ -20,7 +60,7 @@
             </div>
             <div class="col-md-3 offset-md-3 form-group">
                 <label>ImagePath: </label>
-                <input type="text" class="form-control" required name="imagePath" value="@Model.CurrentPhoto.ImagePath" />
+                <input type="text" class="form-control" required name="imagePath" value="@Model.CurrentPhoto."ImagePath" /> IMPORTANT NOTE: Remember to remove quotation before ImagePath
             </div>
         </div>
         <div class="form-row">
@@ -37,4 +77,4 @@
         </div>
     </div>
     <input type="hidden" name="PhotoID" value="@Model.CurrentPhoto.PhotoID" />
-</form>
+</form> -->
