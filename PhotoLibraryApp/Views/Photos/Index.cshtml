@@ -24,7 +24,7 @@
 
     function deleteAccount() {
         var id = $("#hdnDeletePhotoID").val();
-        window.location.href = '@Url.Action("Delete", "Photos", new { id = "" })' + id;
+        window.location.href = "/Photos/Delete/" + id;
 
        
     }
@@ -84,6 +84,6 @@
 </div>
 
 
-<!-- window.location.href = "/Photos/Delete/" + id; PREVIOUS CODE ON LINE 27 -->
+<!--  window.location.href = ' "AT"Url.Action("Delete", "Photos", new { id = "" })' + id; PREVIOUS CODE ON LINE 27 -->
 <!-- <td><a type="button" href="~/Photos/Update/** THE AT SYMBOL IS MISSING HERE** photo.PhotoID" class="btn btn-secondary btn-sm">EDIT</a></td> PREVIOUS CODE ON LINE 61-->
 <!-- <th colspan="2"><a type="button" href="~/Photos/Update/0" class="btn btn-success btn-sm">ADD NEW PHOTO</a></th> PREVIOUS CODE ON LINE 46-->
