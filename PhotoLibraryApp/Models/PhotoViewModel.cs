@@ -48,11 +48,6 @@ namespace PhotoLibraryApp.Models
         {
             if (photo.PhotoID > 0)
             {
-                // Update existing photo
-
-                // Check if a new image file is provided
-                
-
                 _repo.Update(photo);
             }
             else
