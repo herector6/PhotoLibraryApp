@@ -32,14 +32,16 @@
         <div class="form-row">
             <div class="col-md-6 offset-md-3 form-group">
                 <label>Date:</label>
-                <input type="datetime-local" class="form-control" required name="Date" value="@Model.CurrentPhoto.Date.ToString("MM-dd-yyyy")" />
+                <input type="datetime-local" class="form-control" required name="Date" value="@Model.CurrentPhoto.Date.ToString("MM-dd-yy")" />
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-6 offset-md-3">
                 <button type="button" class="btn btn-secondary" onclick="location.href = '@Url.Action("Index", "Photos")'">CANCEL</button>
                 <!-- <button type="button" class="btn btn-secondary" onclick="location.href = '/Photos/Index'">CANCEL</button> -->
-                <button type="submit" class="btn btn-primary">SAVE PHOTO</button>
+                <button type="submit" class="btn btn-primary" onclick="location.href = '@Url.Action("Index", "Photos")'">SAVE PHOTO</button>
+                
+
             </div>
         </div>
     </div>

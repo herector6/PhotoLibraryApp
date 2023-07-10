@@ -51,21 +51,7 @@ namespace PhotoLibraryApp.Models
                 // Update existing photo
 
                 // Check if a new image file is provided
-                if (photo.ImageFile != null && photo.ImageFile.Length > 0)
-                {
-                    // Save the image file to the server
-                    string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + photo.ImageFile.FileName;
-                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
-                    {
-                        photo.ImageFile.CopyTo(fileStream);
-                    }
-
-                    // Update the image path
-                    photo.ImagePath = uniqueFileName;
-                }
+                
 
                 _repo.Update(photo);
             }

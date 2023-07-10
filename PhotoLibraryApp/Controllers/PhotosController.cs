@@ -65,7 +65,7 @@ namespace PhotoLibraryApp.Controllers
 
 
         [HttpPost]
-        public IActionResult Update(int id, string name, IFormFile imageFile, DateTime date)
+        public IActionResult Update(int photoID, string name, IFormFile imageFile, DateTime date)
         {
             PhotoViewModel model = new PhotoViewModel(_context, _hostingEnvironment);
 
@@ -87,7 +87,7 @@ namespace PhotoLibraryApp.Controllers
                     string imagePath = filePath; // Or adjust according to your needs
 
                     // Create the PhotoModel instance with imagePath instead of imageFile
-                    PhotoModel photo = new PhotoModel(id, name, imageFile, date);
+                    PhotoModel photo = new PhotoModel(photoID, name, imageFile, date);
 
                     // Save the photo to the database
                     model.SavePhoto(photo);
