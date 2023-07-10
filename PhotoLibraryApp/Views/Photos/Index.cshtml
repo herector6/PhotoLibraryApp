@@ -43,7 +43,7 @@
                     <th>ImagePath</th>
                     <th>Date</th>
 
-                    <th colspan="2"><a type="button" href='@Url.Action("Update", "Photos", new { id = 0 })' class="btn btn-success btn-sm">ADD NEW PHOTO</a></th>
+                    <th colspan="2"><a type="button" href='@Url.Action("Index", "Photos", new { id = 0 })' class="btn btn-success btn-sm">ADD NEW PHOTO</a></th>
 
                 </tr>
 
@@ -59,7 +59,7 @@
 
                         
                         <td>@photo.Date</td>
-                        <td><a type="button" href='@Url.Action("Update", "Photos", new { id = @photo.PhotoID })' class="btn btn-secondary btn-sm">EDIT</a></td>                        
+                        <td><a type="button" href='@Url.Action("Index", "Photos", new { id = @photo.PhotoID })' class="btn btn-secondary btn-sm">EDIT</a></td>                        
                         <td><button type="button" onclick="confirmDelete(@photo.PhotoID)" class="btn btn-danger btn-sm">DELETE</button></td>
                     </tr>
                 }
