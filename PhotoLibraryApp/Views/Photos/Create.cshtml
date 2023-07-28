@@ -1,0 +1,49 @@
+﻿@model PhotoViewModel
+
+@{
+
+    ViewData["Title"] = $"Photo Library | Create";
+}
+
+
+<form enctype="multipart/form-data" method="post">
+    <div>
+        <div class="row">
+            <div class="col-6 offset-3 text-center">
+                <h1 class="display-4" style="margin: 20px 0px;">Create</h1>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Name:</label>
+                <input type="text" class="form-control" required name="Name"/>
+            </div>
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Image:</label>
+                <input type="file" class="form-control" name="ImageFile" />
+                @* @if (!string.IsNullOrWhiteSpace(Model.CurrentPhoto.ImagePath))
+                {
+                    <img src="~/uploads/@Model.CurrentPhoto.ImagePath" alt="" width="100" />
+                }*@
+
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3 form-group">
+                <label>Date:</label>
+                <input type="datetime-local" class="form-control" required name="Date"/>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-6 offset-md-3">
+                <button type="button" class="btn btn-secondary" onclick="location.href = '/Photos/Index'">CANCEL</button>
+                <!-- <button type="button" class="btn btn-secondary" onclick="location.href = 'ATUrl.Action("Index", "Photos")'">CANCEL</button> -->
+                <!--<button type="submit" class="btn btn-primary" onclick="location.href = 'ATUrl.Action("CreateNewFile", "Photos")'">SAVE PHOTO</button>-->
+                <button type="submit" class="btn btn-secondary" asp-action="CreateNewFile" asp-controller= "Photos">Submit</button>
+
+
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="PhotoID"/>
+</form>
